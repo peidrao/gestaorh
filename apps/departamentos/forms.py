@@ -6,4 +6,5 @@ class DepartamentoForm(forms.ModelForm):
 
     class Meta:
         model = Departamento
-        fields = "__all__"
+        exclude = ("empresa",)
+    

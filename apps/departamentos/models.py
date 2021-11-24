@@ -4,7 +4,7 @@ from apps.empresas.models import Empresa
 # Create your models here.
 
 class Departamento(models.Model):
-    nome = models.CharField(max_length=100, help_text='Nome da empresa')
+    nome = models.CharField(max_length=100, help_text='Nome do departamento')
     empresa = models.ForeignKey(Empresa, on_delete=models.SET_NULL, null=True, blank=True)
     is_active = models.BooleanField(default=True)
 

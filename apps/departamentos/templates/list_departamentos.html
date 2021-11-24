@@ -26,11 +26,11 @@
                 <td>{{ departamento.nome }}</td>
                 <td>{{ departamento.empresa.nome }}</td>
                 <td>
-                  <a href="" class="btn btn-outline-dark">
+                  <a href="{% url 'departamento:update' departamento.id %}" class="btn btn-outline-dark">
                     <span class="material-icons">edit</span>
                   </a>
 
-                  <button id="{{ departamento.id }}" class="btn btn-outline-danger remove_funcionario">
+                  <button id="{{ departamento.id }}" class="btn btn-outline-danger remover_departamento">
                     <span class="material-icons">delete</span>
                   </button>
                 
@@ -44,7 +44,5 @@
 {% endblock main %}
 
 {% block script %}
-
-  
-
+  <script src="{% static 'js/apps/departamentos.js' %}" ></script>
 {% endblock  %}
