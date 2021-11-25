@@ -40,12 +40,12 @@
                 </td>
                 <td>
                   <a href="{% url 'documento:create' funcionario.id %}" class="btn btn-outline-dark">
-                    <span class="material-icons">post_add</span>
+                    <span class="material-icons">note_add</span>
                   </a>
 
-                  <button id="{{ funcionario.id }}" class="btn btn-outline-danger remove_funcionario">
-                    <span class="material-icons">delete</span>
-                  </button>
+                  {% comment %} <a href="{% url 'documento:view' funcionario_doc.id %}" class="btn btn-outline-secondary">
+                    <span class="material-icons">description</span>
+                  </a> {% endcomment %}
                 
                 </td>
                 

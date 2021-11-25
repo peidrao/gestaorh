@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render, HttpResponse
 from django.urls import reverse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from apps.documentos.models import Documento
 
 
 from apps.funcionarios.models import Funcionario
@@ -13,7 +14,12 @@ def index(request):
 
 
 def list(request):
-    funcionarios = Funcionario.objects.filter(empresa=request.user.empresa, is_active=True)
+    funcionarios = Funcionario.objects.filter(empresa=request.user.empresa, is_active=True).values('id', 'first_name', 'last_name', 'email')
+    for func in funcionarios:  
+        document = Documento.objects.filter(funcionario_id=func['id']).values('id')
+        func['document_id'] = document
+
+    # TODO: Terminar visualização
     context = {'funcionarios': funcionarios}
 
     return render(request, 'list.html', context)
