@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Documento {% endblock title %}
+{% block navbar %} {% include 'partials/navbar.html' %} {% endblock  %}
+
+{% block main %}
+<div class="card mt-5 ">
+  <div class="card-header text-center">
+    Documento do funcionario: {{documento.funcionario.nome}}
+  </div>
+  <div class="card-body">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Documento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{ documento.id }}</th>
+                <td>{{ documento.descricao }}</td>
+                <td>{{ documento.documento }}</td>  
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+  </div>
+</div>
+{% endblock main %}
+
+{% block script %}
+{% endblock  %}
