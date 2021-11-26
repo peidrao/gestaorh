@@ -7,7 +7,7 @@ from apps.documentos.models import Documento
 
 from apps.funcionarios.models import Funcionario
 from apps.funcionarios.forms import FuncionarioForm
-# Create your views here.
+
 
 def index(request):
     return HttpResponse('Hello World!')
@@ -16,9 +16,12 @@ def index(request):
 def list(request):
     funcionarios = Funcionario.objects.filter(empresa=request.user.empresa, is_active=True).values('id', 'first_name', 'last_name', 'email')
     for func in funcionarios:  
-        document = Documento.objects.filter(funcionario_id=func['id']).values('id')
-        func['document_id'] = document
-
+        try:
+            document = Documento.objects.get(funcionario_id=func['id'])
+            func['document_id'] = document.id
+        except Documento.DoesNotExist:
+            func['document_id'] = 0
+        
     # TODO: Terminar visualização
     context = {'funcionarios': funcionarios}
 

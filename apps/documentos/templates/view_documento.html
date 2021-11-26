@@ -7,7 +7,7 @@
 {% block main %}
 <div class="card mt-5 ">
   <div class="card-header text-center">
-    Documento do funcionario: {{documento.funcionario.nome}}
+    Documento do funcionario: {{documento.funcionario.first_name}}
   </div>
   <div class="card-body">
     <table class="table table-striped">
@@ -22,9 +22,10 @@
             <tr>
                 <th scope="row">{{ documento.id }}</th>
                 <td>{{ documento.descricao }}</td>
-                <td>{{ documento.documento }}</td>  
+                <td>
+                  <a href="{{ documento.documento }}">{{ documento.documento }}</a>
+                </td>  
             </tr>
-        {% endfor %}
         </tbody>
     </table>
   </div>
