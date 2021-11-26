@@ -1,7 +1,10 @@
 import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 
 SECRET_KEY = 'django-insecure-ltyv59uak2t+4s+o4-v4#24&c8r(!nx$9efu3d_ttp&=$guv@y'
@@ -115,3 +118,11 @@ CELERY_BROKER_URL = 'redis://localhost:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
+
+
+EMAIL_HOST=os.getenv('EMAIL_HOST')
+EMAIL_PORT=os.getenv('EMAIL_PORT')
+EMAIL_HOST_USER=os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD=os.getenv('EMAIL_HOST_PASSWORD')
+# EMAIL_USE_TLS=os.getenv('EMAIL_USE_TLS')
+# EMAIL_USE_SSL=os.getenv('EMAIL_USE_SSL')
