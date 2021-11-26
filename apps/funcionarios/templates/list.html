@@ -36,6 +36,11 @@
                   <button id="{{ funcionario.id }}" class="btn btn-outline-danger remove_funcionario">
                     <span class="material-icons">delete</span>
                   </button>
+
+                   <a href="{% url 'registro_hora:list' funcionario.id %}" class="btn btn-outline-primary">
+                    <span class="material-icons">pending_actions</span>
+                  </a>
+
                 
                 </td>
                 <td>

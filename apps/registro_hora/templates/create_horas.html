@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} Cadastrar Hora {% endblock title %}
+{% block navbar %} {% include 'partials/navbar.html' %} {% endblock  %}
+
+{% block main %}
+    <h1 class="text-center mt-5">Formulário: Cadastrar Hora</h1>
+
+<div class="d-flex justify-content-center mt-5">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-dark">Cadastrar Hora</button>
+    </form>
+</div>
+
+
+{% endblock main %}

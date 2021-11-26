@@ -11,6 +11,7 @@ urlpatterns = [
     path('departamentos/', include('apps.departamentos.urls')),
     path('documentos/', include('apps.documentos.urls')),
     path('empresa/', include('apps.empresas.urls')),
+    path('horas/', include('apps.registro_hora.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

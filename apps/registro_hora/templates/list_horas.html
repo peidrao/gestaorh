@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Lista de Horas {% endblock title %}
+{% block navbar %} {% include 'partials/navbar.html' %} {% endblock  %}
+
+{% block main %}
+<div class="card mt-5 ">
+  <div class="card-header">
+    <div class="d-flex bd-highlight">
+        <div class="p-2 w-100  text-center">Horas do funcionario: {{funcionario.first_name}}</div>
+        <div class="p-2 flex-shrink-1 bd-highlight">
+            <a href="{% url 'registro_hora:create' funcionario.id %}" class="btn btn-outline-dark">
+                <span class="material-icons">schedule</span>
+            </a>
+        </div>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    {% if sem_horas %}
+        <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">Ops...</h4>
+            <p>Esse funcionário ainda não possui horas cadastradas</p>
+            <hr>
+            <p class="mb-0">Cadastre horas para esse usuário!</p>
+        </div>
+    {% else %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Motivo</th>
+                    <th scope="col">Horas</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for hora in horas  %}
+                <tr>
+                    <th scope="row">{{ hora.id }}</th>
+                    <td scope="">{{ hora.motivo }}</td>
+                    <td scope="">{{ hora.horas }}</td>
+                    <td scope="">
+                        <a href="{% url 'registro_hora:edit' hora.id %}" class="btn btn-outline-dark">
+                            <span class="material-icons">edit</span>
+                        </a>
+
+                        <button id="{{ hora.id }}" class="btn btn-outline-danger remove_hora">
+                            <span class="material-icons">delete</span>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+  </div>
+</div>
+{% endblock main %}
+
+{% block script %}
+
+    <script src="{% static 'js/apps/horas.js' %}"></script>
+
+{% endblock  %}
