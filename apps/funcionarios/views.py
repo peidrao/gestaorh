@@ -2,8 +2,6 @@ from django.shortcuts import redirect, render, HttpResponse
 from django.urls import reverse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from apps.documentos.models import Documento
-
 
 from apps.funcionarios.models import Funcionario
 from apps.funcionarios.forms import FuncionarioForm
