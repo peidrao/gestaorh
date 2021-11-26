@@ -8,7 +8,7 @@ def send_report():
     send_mail(
         'Relatório Celery',
         'Meu relatório aqui',
-        'contatopedrorn@gmail.com',
-        ['peidrao01@gmail.com'],
+        'peidrao01@gmail.com',
+        ['contatopedrorn@gmail.com'],
         fail_silently=False
     )
