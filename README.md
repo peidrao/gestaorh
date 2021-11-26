@@ -14,5 +14,3 @@ O sistema criado faz o gerenciamento de funcionários de empresas
 - Ajax
 - Bootstrap5
 - sweetalert2
-
-
