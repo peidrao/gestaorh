@@ -6,6 +6,8 @@ O sistema criado faz o gerenciamento de funcionários de empresas
 
 ## O que foi usado?
 - Python
+- Redis
+- Celery
 - Django
 - Jinja
 - Jquery
