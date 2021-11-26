@@ -9,7 +9,6 @@ class RegistroHoraExtra(models.Model):
     funcionario = models.ForeignKey(
         Funcionario, on_delete=models.SET_NULL, null=True, blank=True)
     horas = models.DecimalField(max_digits=5, decimal_places=2)
-    
 
     def __str__(self) -> str:
         return f'{self.motivo}'

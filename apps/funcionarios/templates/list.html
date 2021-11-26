@@ -17,6 +17,7 @@
                 <th scope="col">Primeiro Nome</th>
                 <th scope="col">Sobrenome</th>
                 <th scope="col">E-mail</th>
+                <th scope="col">Total horas</th>
                 <th scope="col">Ações</th>
                 <th scope="col">Documento</th>
             </tr>
@@ -28,6 +29,7 @@
                 <td>{{ funcionario.first_name }}</td>
                 <td>{{ funcionario.last_name }}</td>
                 <td>{{ funcionario.email }}</td>
+                <td>{{ funcionario.total_horas_extras }}</td>
                 <td>
                   <a href="{% url 'funcionario:edit' funcionario.id %}" class="btn btn-outline-dark">
                     <span class="material-icons">edit</span>
@@ -48,15 +50,10 @@
                     <span class="material-icons">note_add</span>
                   </a>
 
-                  {% if funcionario.document_id != 0 %}
-                    <a href="{% url 'documento:view' funcionario.document_id %}" class="btn btn-outline-secondary">
+                    <a href="{% url 'documento:list' funcionario.id %}" class="btn btn-outline-secondary">
                       <span class="material-icons">description</span>
                     </a> 
-                  {% else %}
-                    <button class="btn btn-outline-secondary" disabled>
-                      <span class="material-icons">description</span>
-                    </button> 
-                  {% endif %}
+              
                 </td>
                 
             </tr>

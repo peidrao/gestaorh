@@ -6,6 +6,6 @@ app_name = 'documento'
 
 urlpatterns = [
     path('create/<int:id>', views.create, name='create'),
-    path('view/<int:id>', views.view, name='view'),
+    path('list/<int:id>', views.list, name='list'),
     # path('delete', views.delete, name='delete'),
 ]

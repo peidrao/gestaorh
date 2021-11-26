@@ -19,13 +19,15 @@
             </tr>
         </thead>
         <tbody>
+        {% for doc in documentos %}
             <tr>
-                <th scope="row">{{ documento.id }}</th>
-                <td>{{ documento.descricao }}</td>
+                <th scope="row">{{ doc.id }}</th>
+                <td>{{ doc.descricao }}</td>
                 <td>
-                  <a href="{{ documento.documento }}">{{ documento.documento }}</a>
+                  <a href="{{ doc.documento.url }}">{{ doc.documento.url }}</a>
                 </td>  
             </tr>
+        {% endfor %}
         </tbody>
     </table>
   </div>

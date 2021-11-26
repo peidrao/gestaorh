@@ -14,15 +14,8 @@ def index(request):
 
 
 def list(request):
-    funcionarios = Funcionario.objects.filter(empresa=request.user.empresa, is_active=True).values('id', 'first_name', 'last_name', 'email')
-    for func in funcionarios:  
-        try:
-            document = Documento.objects.get(funcionario_id=func['id'])
-            func['document_id'] = document.id
-        except Documento.DoesNotExist:
-            func['document_id'] = 0
-        
-    # TODO: Terminar visualização
+    funcionarios = Funcionario.objects.filter(empresa=request.user.empresa, is_active=True)
+
     context = {'funcionarios': funcionarios}
 
     return render(request, 'list.html', context)
@@ -35,7 +28,7 @@ def add(request):
         if form.is_valid():
             form.save()
             return redirect(reverse('home'))
-    
+
     context = {
         'form': FuncionarioForm,
     }
@@ -47,15 +40,18 @@ def add(request):
 def delete(request):
     if request.method == 'POST':
         id_funcionario = request.POST['id_funcionario']
-        try: 
+        try:
             funcionario = Funcionario.objects.get(id=id_funcionario)
             funcionario.is_active = False
             funcionario.save()
-            response = {'icon': 'success', 'title': 'Sucesso', 'text': 'Funcionário removido com sucesso!'}
+            response = {'icon': 'success', 'title': 'Sucesso',
+                        'text': 'Funcionário removido com sucesso!'}
         except Funcionario.DoesNotExist:
-            response = {'icon': 'error', 'title': 'Erro', 'text': 'Não foi encontrado o funcionário'}
+            response = {'icon': 'error', 'title': 'Erro',
+                        'text': 'Não foi encontrado o funcionário'}
 
         return JsonResponse(response, safe=False)
+
 
 def edit(request, id):
     if request.method == 'POST':
@@ -63,7 +59,7 @@ def edit(request, id):
         if form.is_valid():
             funcionario = Funcionario.objects.get(id=id)
             funcionario.username = form.cleaned_data['username']
-            
+
             funcionario.set_password(form.cleaned_data['password'])
             funcionario.first_name = form.cleaned_data['first_name']
             funcionario.last_name = form.cleaned_data['last_name']

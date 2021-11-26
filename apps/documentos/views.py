@@ -28,11 +28,11 @@ def create(request, id):
     return render(request, 'create_documento.html', context)
 
 
-def view(request, id):
+def list(request, id):
     context = {}
     try:
-        documento = Documento.objects.get(id=id)
-        context['documento'] = documento
+        documentos = Documento.objects.filter(funcionario_id=id)
+        context['documentos'] = documentos
     except Documento.DoesNotExist:
         return redirect(reverse('funcionario:list'))
     return render(request, 'view_documento.html', context)
